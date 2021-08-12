@@ -56,6 +56,29 @@ volumes:
   mongodb-data:
 ```
 
+# usage
+
+you can easily import the matching pip package with it and start logging
+https://github.com/JustinGuese/pip-mongodb-logger-package
+
+`pip install git+https://github.com/JustinGuese/pip-mongodb-logger-package`
+
+```
+from mongodblogger import MongoDBLogger
+
+ml = MongoDBLogger(auth_pw = "apppassword", logging_url = "http://mongodb-logger:5000", appname = "mycurrentapp")
+
+try:
+  someDangerousFunction()
+ except Exception as e:
+  msg = {
+    "error" : str(repr(e))
+  }
+  ml.send(msg)
+
+```
+
+
 
 ## test
 
